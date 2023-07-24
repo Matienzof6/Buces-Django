@@ -1,0 +1,29 @@
+{% extends 'C:\Users\Usuario\Desktop\Buces-Project-Django\buces\ProyectoWebApp\templates\ProyectoWebApp\base.html' %}
+{% load static %}
+{% block titleh1 %} Tienda {% endblock %} 
+
+{% block content %}
+
+    
+
+    <div class="container">
+      <h1 class="text-center d-flex justify-content-center p-5 m-2" style= "font-family: 'Helvetica'; color: white; filter: drop-shadow(8px 8px 4px rgb(229, 9, 20));">Nuestros Productos</h1>
+      <div class="row">
+    {% for producto in productos %}
+        <div class="col-md-3">
+          <div class="card" style="width: 100%; margin: 5px 5px;">
+            <img src="{{producto.imagen.url}}" class="card-img-top">
+            <div class="card-body" style="text-align: center;">
+              <h7 class="card-title">{{producto.titulo}}</h7>
+              <p class="card-subtitle">{{producto.precio}}&nbsp;€ <p>
+              
+            </div>
+            <div class="card-footer text-center">
+              <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Añadir al carro</a>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+      </div>  
+    </div>
+{% endblock %}
